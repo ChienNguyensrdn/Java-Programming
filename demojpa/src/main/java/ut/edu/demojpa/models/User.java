@@ -1,5 +1,6 @@
 package ut.edu.demojpa.models;
 import jakarta.persistence.*;
+import java.util.*;
 @Entity
 @Table (name = "users")
 public class User {
@@ -40,4 +41,13 @@ public class User {
         this.password = password;
     }
     public User() {}
+    @ManyToMany
+    @JoinTable(
+            name = "user_permission",
+            joinColumns = @JoinColumn(name ="userId"),
+            inverseJoinColumns = @JoinColumn(name ="permissionId")
+    )
+    private Set<Permission> permissions = new HashSet<>();
+    public Set<Permission> getPermissions() {return this.permissions;}
+    public void setPermissions(Set<Permission> permissions) { this.permissions = permissions; }
 }
