@@ -1,6 +1,13 @@
 package ut.edu.demojpa.models;
-import java.util.*;
-import jakarta.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Permission {
@@ -12,7 +19,7 @@ public class Permission {
     @Column(name = "Code", length = 50)
     private String code;
 
-    @Column(name = "permission_name", length = 100)
+    @Column(name = "permissionName", length = 100)
     private String permissionName;
 
     public Long getId() {
@@ -38,7 +45,7 @@ public class Permission {
     public void setPermissonName(String permissonName) {
         this.permissionName = permissonName;
     }
-    @ManyToMany(mappedBy = "Permission")
+    @ManyToMany
     private Set<User> users = new HashSet<>();
     public Set<User> getUsers() {return users;}
     public void setUsers(Set<User> users) {this.users = users;}

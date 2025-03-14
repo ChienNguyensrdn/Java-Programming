@@ -1,6 +1,13 @@
 package ut.edu.demojpa.models;
-import jakarta.persistence.*;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 @Entity
 @Table (name = "users")
 public class User {
@@ -42,11 +49,6 @@ public class User {
     }
     public User() {}
     @ManyToMany
-    @JoinTable(
-            name = "user_permission",
-            joinColumns = @JoinColumn(name ="userId"),
-            inverseJoinColumns = @JoinColumn(name ="permissionId")
-    )
     private Set<Permission> permissions = new HashSet<>();
     public Set<Permission> getPermissions() {return this.permissions;}
     public void setPermissions(Set<Permission> permissions) { this.permissions = permissions; }
