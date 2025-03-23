@@ -1,5 +1,5 @@
 package com.example.restapi.repositories;
 
-public class UserRepository {
+public class UserRepository implements IUserRepository{
 
 }
