@@ -17,5 +17,9 @@ public class HomeController {
     public String HomePage() {
         return "home";//goi den html page 
     }
+    @GetMapping("/admin")
+    public String adminPage() {
+        return "home";//goi den html page 
+    }
 }
 //Layout ...
